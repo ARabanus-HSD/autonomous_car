@@ -33,7 +33,7 @@ def steering(direction=["a", "d", "x"]):
     return turning
 
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 pin_fw = GPIO.setup(17, GPIO.OUT)
 pin_bw = GPIO.setup(27, GPIO.OUT)
 pin_l = GPIO.setup(23, GPIO.OUT)
