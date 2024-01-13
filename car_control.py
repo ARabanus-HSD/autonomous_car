@@ -50,42 +50,42 @@ while True:
     # check if steering is left
     if steering(l_r) == 1:
         print("going left\n")
-        pin_l.output(True)
+        GPIO.output(7, True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.output(True)
+            GPIO.output(3, True)
             time.sleep(1)
-            pin_fw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.output(True)
+            GPIO.output(5, True)
             time.sleep(1)
-            pin_bw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
-        pin_l.output(False)
+        GPIO.output(7, False)
 
     # check if steering is right
     elif steering(l_r) == -1:
         print("going right\n")
-        pin_r.output(True)
+        GPIO.output(11, True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.output(True)
+            GPIO.output(3, True)
             time.sleep(1)
-            pin_fw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.output(True)
+            GPIO.output(5, True)
             time.sleep(1)
-            pin_bw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
-        pin_r.output(False)
+        GPIO.output(11, False)
 
     # check if steering is none
     elif steering(l_r) == 0:
@@ -93,14 +93,14 @@ while True:
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.output(True)
+            GPIO.output(3, True)
             time.sleep(1)
-            pin_fw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.output(True)
+            GPIO.output(5, True)
             time.sleep(1)
-            pin_bw.output(False)
+            GPIO.output(3, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
