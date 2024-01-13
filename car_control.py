@@ -60,7 +60,7 @@ while True:
             print("going backwards\n")
             GPIO.output(5, True)
             time.sleep(1)
-            GPIO.output(3, False)
+            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
@@ -80,7 +80,7 @@ while True:
             print("going backwards\n")
             GPIO.output(5, True)
             time.sleep(1)
-            GPIO.output(3, False)
+            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
@@ -99,7 +99,7 @@ while True:
             print("going backwards\n")
             GPIO.output(5, True)
             time.sleep(1)
-            GPIO.output(3, False)
+            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
