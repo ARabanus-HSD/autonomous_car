@@ -1,6 +1,7 @@
 # micropython car control
 
-# from machine import Pin
+from machine import Pin
+import time
 
 def motor(direction=["w", "s"]):
     """
@@ -28,18 +29,31 @@ def steering(direction=["a", "d"]):
         turning = False
     return turning
 
+pin_fw = Pin(3, mode=Pin.OUT)
+pin_fw = Pin(5, mode=Pin.OUT)
+pin_l = Pin(7, mode=Pin.OUT)
+pin_r = Pin(11, mode=Pin.OUT)
+
 while True:
 
     f_b = input("forward or backward?\n")
 
     if motor(f_b) is True:
         print("going forwards\n")
+        pin_fw = Pin(16, mode=Pin.OUT, value=1)
+        time.sleep(1)
     elif motor(f_b) is False:
         print("going backwards\n")
+        pin_fw = Pin(16, mode=Pin.OUT, value=1)
+        time.sleep(1)
 
     l_r = input("left or right?\n")
 
     if steering(l_r) is True:
-        print("going forwards\n")
+        print("going left\n")
+        pin_l = Pin(16, mode=Pin.OUT, value=1)
+        time.sleep(1)
     elif steering(l_r) is False:
-        print("going backwards\n")
+        print("going right\n")
+        pin_r = Pin(16, mode=Pin.OUT, value=1)
+        time.sleep(1)
