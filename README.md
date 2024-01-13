@@ -1,7 +1,6 @@
 # autonomous_car
 
-use OAK-D for SLAM on Jetson Nano Devboard on an RC-Car
+goal of this project:
 
-something along the lines of this:
-https://docs.luxonis.com/en/latest/pages/slam_oak/
+from camera input to output for rc car
 
