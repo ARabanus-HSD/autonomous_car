@@ -1,6 +1,5 @@
 # micropython car control
-
-from RPi.GPIO import GPIO
+import RPi.GPIO as GPIO
 import time
 
 def motor(direction=["w", "s", "x"]):
