@@ -34,17 +34,20 @@ def steering(direction=["a", "d", "x"]):
 
 
 GPIO.setmode(GPIO.BCM)
-pin_fw = GPIO.setup(17, GPIO.OUT)
-pin_bw = GPIO.setup(27, GPIO.OUT)
-pin_l = GPIO.setup(23, GPIO.OUT)
-pin_r = GPIO.setup(24, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
+GPIO.setup(24, GPIO.OUT)
 
 while True:
-
+    GPIO.output(17, True)
+    GPIO.output(27, True)
+    GPIO.output(23, True)
+    GPIO.output(24, True)
     # collect use input on where you want to go
     f_b = input("forward (w) or backward (s) or none (x)?\n")
     l_r = input("left (a) or right (d) or none (x)?\n")
-
+    
 
     # check if steering is left
     if steering(l_r) == 1:
