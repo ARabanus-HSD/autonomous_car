@@ -1,6 +1,6 @@
 # micropython car control
 
-from machine import Pin
+from RPi.GPIO import GPIO
 import time
 
 def motor(direction=["w", "s", "x"]):
@@ -34,11 +34,11 @@ def steering(direction=["a", "d", "x"]):
     return turning
 
 
-
-pin_fw = Pin(3, mode=Pin.OUT)
-pin_bw = Pin(5, mode=Pin.OUT)
-pin_l = Pin(7, mode=Pin.OUT)
-pin_r = Pin(11, mode=Pin.OUT)
+GPIO.setmode(GPIO.BOARD)
+pin_fw = GPIO.setup(3, GPIO.OUT)
+pin_bw = GPIO.setup(5, GPIO.OUT)
+pin_l = GPIO.setup(7, GPIO.OUT)
+pin_r = GPIO.setup(11, GPIO.OUT)
 
 while True:
 
@@ -50,50 +50,57 @@ while True:
     # check if steering is left
     if steering(l_r) == 1:
         print("going left\n")
-        pin_l.high()
+        pin_l.output(True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.high()
+            pin_fw.output(True)
             time.sleep(1)
+            pin_fw.output(False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.high()
+            pin_bw.output(True)
             time.sleep(1)
+            pin_bw.output(False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
+        pin_l.output(False)
 
     # check if steering is right
     elif steering(l_r) == -1:
         print("going right\n")
-        pin_r.high()
+        pin_r.output(True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.high()
+            pin_fw.output(True)
             time.sleep(1)
+            pin_fw.output(False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.high()
+            pin_bw.output(True)
             time.sleep(1)
+            pin_bw.output(False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
+        pin_r.output(False)
 
     # check if steering is none
     elif steering(l_r) == 0:
-        print("going right\n")
-        pin_r.high()
+        print("not steering\n")
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw.high()
+            pin_fw.output(True)
             time.sleep(1)
+            pin_fw.output(False)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_bw.high()
+            pin_bw.output(True)
             time.sleep(1)
+            pin_bw.output(False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
