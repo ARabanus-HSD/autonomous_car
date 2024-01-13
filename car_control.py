@@ -23,7 +23,7 @@ def steering(direction=["a", "d", "x"]):
     input is a or d as a string
     returns bool:
         true for left
-        false for right
+        false for right 
     """
     if direction == "a":
         turning = 1
