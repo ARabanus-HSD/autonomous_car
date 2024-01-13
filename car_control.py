@@ -36,7 +36,7 @@ def steering(direction=["a", "d", "x"]):
 
 
 pin_fw = Pin(3, mode=Pin.OUT)
-pin_fw = Pin(5, mode=Pin.OUT)
+pin_bw = Pin(5, mode=Pin.OUT)
 pin_l = Pin(7, mode=Pin.OUT)
 pin_r = Pin(11, mode=Pin.OUT)
 
@@ -50,15 +50,15 @@ while True:
     # check if steering is left
     if steering(l_r) == 1:
         print("going left\n")
-        pin_l = Pin(16, mode=Pin.OUT, value=1)
+        pin_l.high()
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_fw.high()
             time.sleep(1)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_bw.high()
             time.sleep(1)
         elif motor(f_b) == 0:
             print("doing nothing")
@@ -67,15 +67,15 @@ while True:
     # check if steering is right
     elif steering(l_r) == -1:
         print("going right\n")
-        pin_r = Pin(16, mode=Pin.OUT, value=1)
+        pin_r.high()
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_fw.high()
             time.sleep(1)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_bw.high()
             time.sleep(1)
         elif motor(f_b) == 0:
             print("doing nothing")
@@ -84,15 +84,15 @@ while True:
     # check if steering is none
     elif steering(l_r) == 0:
         print("going right\n")
-        pin_r = Pin(16, mode=Pin.OUT, value=1)
+        pin_r.high()
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_fw.high()
             time.sleep(1)
         elif motor(f_b) == -1:
             print("going backwards\n")
-            pin_fw = Pin(16, mode=Pin.OUT, value=1)
+            pin_bw.high()
             time.sleep(1)
         elif motor(f_b) == 0:
             print("doing nothing")
