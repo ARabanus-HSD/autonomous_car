@@ -34,10 +34,10 @@ def steering(direction=["a", "d", "x"]):
 
 
 GPIO.setmode(GPIO.BOARD)
-pin_fw = GPIO.setup(3, GPIO.OUT)
-pin_bw = GPIO.setup(5, GPIO.OUT)
-pin_l = GPIO.setup(7, GPIO.OUT)
-pin_r = GPIO.setup(11, GPIO.OUT)
+pin_fw = GPIO.setup(2, GPIO.OUT)
+pin_bw = GPIO.setup(3, GPIO.OUT)
+pin_l = GPIO.setup(4, GPIO.OUT)
+pin_r = GPIO.setup(17, GPIO.OUT)
 
 while True:
 
@@ -49,42 +49,42 @@ while True:
     # check if steering is left
     if steering(l_r) == 1:
         print("going left\n")
-        GPIO.output(7, True)
+        GPIO.output(4, True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
+            GPIO.output(2, True)
+            time.sleep(1)
+            GPIO.output(2, False)
+        elif motor(f_b) == -1:
+            print("going backwards\n")
             GPIO.output(3, True)
             time.sleep(1)
             GPIO.output(3, False)
-        elif motor(f_b) == -1:
-            print("going backwards\n")
-            GPIO.output(5, True)
-            time.sleep(1)
-            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
-        GPIO.output(7, False)
+        GPIO.output(4, False)
 
     # check if steering is right
     elif steering(l_r) == -1:
         print("going right\n")
-        GPIO.output(11, True)
+        GPIO.output(17, True)
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
+            GPIO.output(2, True)
+            time.sleep(1)
+            GPIO.output(2, False)
+        elif motor(f_b) == -1:
+            print("going backwards\n")
             GPIO.output(3, True)
             time.sleep(1)
             GPIO.output(3, False)
-        elif motor(f_b) == -1:
-            print("going backwards\n")
-            GPIO.output(5, True)
-            time.sleep(1)
-            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
-        GPIO.output(11, False)
+        GPIO.output(17, False)
 
     # check if steering is none
     elif steering(l_r) == 0:
@@ -92,14 +92,14 @@ while True:
         # check if forwards, backwards or none
         if motor(f_b) == 1:
             print("going forwards\n")
+            GPIO.output(2, True)
+            time.sleep(1)
+            GPIO.output(2, False)
+        elif motor(f_b) == -1:
+            print("going backwards\n")
             GPIO.output(3, True)
             time.sleep(1)
             GPIO.output(3, False)
-        elif motor(f_b) == -1:
-            print("going backwards\n")
-            GPIO.output(5, True)
-            time.sleep(1)
-            GPIO.output(5, False)
         elif motor(f_b) == 0:
             print("doing nothing")
             time.sleep(1)
